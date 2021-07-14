@@ -1,5 +1,6 @@
 import Test.Hspec
 import Day1
+import Day2
 
 main :: IO ()
 main = hspec $ do
@@ -23,4 +24,7 @@ main = hspec $ do
       sumHalfWithFirst [1, 2, 3, 1, 2, 3] `shouldBe` (12 :: Int)
     it "12131415 produces 4" $ do
       sumHalfWithFirst [1, 2, 1, 3, 1, 4, 1, 5] `shouldBe` (4 :: Int)
+  describe "Day 2: Part 1" $ do
+    it "5 1 9 5\n  7 5 3\n  2 4 6 8\n  produces 3" $ do
+      solveDayTwoPartOne "5 1 9 5\n7 5 3\n2 4 6 8\n" `shouldBe` "18"
 
