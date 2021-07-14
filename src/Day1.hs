@@ -7,8 +7,15 @@ module Day1
 
 import Data.Char
 
+partOneFilter:: (Eq a, Num a) => [a] -> [a]
+partOneFilter xs =
+  let
+    ys = tail xs ++ [head xs]
+    xys = zip xs ys
+  in fst <$> filter (uncurry (==)) xys
+  
 sumMatchNext :: (Eq a, Num a) => [a] -> a 
-sumMatchNext xs = snd (foldr (\x (ans, cum) -> (x, cum + (if ans == x then x else 0))) (head xs, 0) xs)
+sumMatchNext = sum . partOneFilter
 
 castToInt :: String -> [Int]
 castToInt = map digitToInt
@@ -24,12 +31,16 @@ solveDayOne f input =
 solveDayOnePartOne :: String -> String
 solveDayOnePartOne = solveDayOne sumMatchNext
 
-sumHalfWithFirst :: (Eq a, Num a) => [a] -> a
-sumHalfWithFirst xs =
+partTwoFilter:: (Eq a, Num a) => [a] -> [a]
+partTwoFilter xs =
   let
     half = length xs `div` 2
     ys = drop half xs ++ take half xs
-  in foldl (\acc (x, y) -> acc + if x == y then x else 0) 0 $ zip xs ys
+    xys = zip xs ys
+  in fst <$> filter (uncurry (==)) xys
+
+sumHalfWithFirst :: (Eq a, Num a) => [a] -> a
+sumHalfWithFirst = sum . partTwoFilter
   
 solveDayOnePartTwo :: String -> String
 solveDayOnePartTwo = solveDayOne sumHalfWithFirst
