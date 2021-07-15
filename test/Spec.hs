@@ -25,6 +25,9 @@ main = hspec $ do
     it "12131415 produces 4" $ do
       sumHalfWithFirst [1, 2, 1, 3, 1, 4, 1, 5] `shouldBe` (4 :: Int)
   describe "Day 2: Part 1" $ do
-    it "5 1 9 5\n  7 5 3\n  2 4 6 8\n  produces 3" $ do
+    it "\n  5 1 9 5\n  7 5 3\n  2 4 6 8\n  produces 3" $ do
       solveDayTwoPartOne "5 1 9 5\n7 5 3\n2 4 6 8\n" `shouldBe` "18"
+  describe "Day 2: Part 2" $ do
+    it "\n  5 9 2 8\n  9 4 7 3\n  3 8 6 5\n  produces 9" $ do
+      solveDayTwoPartTwo "5 9 2 8\n9 4 7 3\n3 8 6 5\n" `shouldBe` "9"
 
